@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "605783508966",
+    "firebase_url": "https://sellit-db3d5.firebaseio.com",
+    "project_id": "sellit-db3d5",
+    "storage_bucket": "sellit-db3d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605783508966:android:88b2a15dce929960",
+        "android_client_info": {
+          "package_name": "com.example.sellit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605783508966-jvcqb0impgqik54ljs2pbjvqpv2lql3g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sellit",
+            "certificate_hash": "31ef1c09bb948a029f85b2ae67dbafc0b9def2bd"
+          }
+        },
+        {
+          "client_id": "605783508966-tuflj7qsl3l11v40rg4saqhrqu792mg5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY1edFBWpo3MiVrs8nrbI_ybP_6w71ink"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605783508966-tuflj7qsl3l11v40rg4saqhrqu792mg5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
