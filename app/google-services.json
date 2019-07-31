@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "605783508966-2ktc237p2e5k6avnj82m38562nm87jfr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sellit",
+            "certificate_hash": "a66dc0b7b6fea6f6ea487d270fb82a3080115fd1"
+          }
+        },
+        {
           "client_id": "605783508966-jvcqb0impgqik54ljs2pbjvqpv2lql3g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
