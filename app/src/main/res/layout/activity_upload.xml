@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UploadActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/reg_appbar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reg_toolbar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/close"
+                    android:src="@drawable/ic_arrow_back_black_24dp"
+                    android:layout_centerVertical="true"
+
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:text="Item Details"
+                    tools:ignore="RtlCompat" />
+
+            </RelativeLayout>
+
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:padding="25dp"
+        android:layout_below="@+id/reg_appbar"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter Item Details"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/item_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="Item Name"
+            android:inputType="text"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rs."
+                android:textSize="22sp"
+                android:layout_marginTop="20dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:paddingRight="10dp"
+                />
+
+            <EditText
+                android:id="@+id/price_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Price"
+                android:inputType="number"
+                />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/description_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Description (Optional)"
+            android:inputType="text"
+            android:height="100dp"
+            />
+
+        <Button
+            android:id="@+id/choose_image_bn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_design"
+            android:text="Choose Image"
+            android:textColor="#ffffff"/>
+
+        <ImageView
+            android:id="@+id/upload_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/upload_bn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_design"
+        android:text="Upload"
+        android:textColor="#ffffff"/>
+
+</RelativeLayout>
