@@ -164,6 +164,7 @@ public class UploadActivity extends AppCompatActivity {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
+                                    dialog.dismiss();
                                     Toast.makeText(UploadActivity.this, "Failed To Upload", Toast.LENGTH_LONG).show();
                                 }
                             });
@@ -171,6 +172,7 @@ public class UploadActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            dialog.dismiss();
                             Toast.makeText(UploadActivity.this, "Failed To Get Image Url", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -178,6 +180,7 @@ public class UploadActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+                    dialog.dismiss();
                     Toast.makeText(UploadActivity.this, "Failed To Upload Image", Toast.LENGTH_LONG).show();
                 }
             });
