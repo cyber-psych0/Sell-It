@@ -105,6 +105,7 @@ public class Login extends AppCompatActivity {
                                     finish();
                                 } else {
                                     Toast.makeText(Login.this, "Please Verify Your email first", Toast.LENGTH_SHORT).show();
+                                    loading.dismiss();
                                 }
                             } else {
                                 Toast.makeText(Login.this, "" + task.getException().toString(), Toast.LENGTH_SHORT).show();
