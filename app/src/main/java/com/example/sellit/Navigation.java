@@ -27,13 +27,28 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Navigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private RecyclerView recyclerView;
+    private ImagesAdapter imagesAdapter;
+
+    private List<Upload> mUploads;
+    private DatabaseReference mDatabaseReference;
+
+    private ProgressBar mProgressBar;
 
 
     @Override
@@ -60,6 +75,36 @@ public class Navigation extends AppCompatActivity
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        mProgressBar = findViewById(R.id.progress_bar);
+        recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        mUploads = new ArrayList<>();
+
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("item_details");
+
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mUploads.clear();
+                for(DataSnapshot mdataSnapshot:dataSnapshot.getChildren()){
+                    Upload upload = mdataSnapshot.getValue(Upload.class);
+                    mUploads.add(upload);
+                }
+                imagesAdapter = new ImagesAdapter(Navigation.this,mUploads);
+                recyclerView.setAdapter(imagesAdapter);
+                mProgressBar.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(Navigation.this,databaseError.getMessage(),Toast.LENGTH_SHORT).show();
+                mProgressBar.setVisibility(View.INVISIBLE);
+            }
+        });
 
 
 

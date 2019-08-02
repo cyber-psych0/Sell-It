@@ -159,6 +159,9 @@ public class UploadActivity extends AppCompatActivity {
 
                                     dialog.dismiss();
                                     Toast.makeText(UploadActivity.this, "Upload Successful", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(UploadActivity.this,Navigation.class);
+                                    startActivity(intent);
+                                    finish();
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
