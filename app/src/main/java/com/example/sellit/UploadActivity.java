@@ -30,7 +30,7 @@ public class UploadActivity extends AppCompatActivity {
 
     private static final int IMAGE_REQUEST = 1;
 
-    ImageView mImageView;
+    ImageView mImageView,close;
     EditText name,price,description;
     Button choose_image_bn,upload_bn;
 
@@ -51,6 +51,7 @@ public class UploadActivity extends AppCompatActivity {
         mImageUri = null;
 
         mImageView = (ImageView)findViewById(R.id.upload_image_view);
+        close = findViewById(R.id.close);
 
         name = (EditText)findViewById(R.id.item_name_edit_text);
         price = (EditText)findViewById(R.id.price_edit_text);
@@ -97,6 +98,13 @@ public class UploadActivity extends AppCompatActivity {
                 uploadFile(item_name, item_price, item_description);
 
 
+            }
+        });
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 
