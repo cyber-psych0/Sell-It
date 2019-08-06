@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -80,6 +81,34 @@ public class Navigation extends AppCompatActivity
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        View header = navigationView.getHeaderView(0);
+        final TextView nav_header = header.findViewById(R.id.username_nav);
+
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        if(user!=null) {
+            final String uid = user.getUid();
+            final DatabaseReference data = FirebaseDatabase.getInstance().getReference("Users");
+            data.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String username = dataSnapshot.child(uid).child("username").getValue(String.class);
+                    assert username != null;
+                    nav_header.setText(username.toUpperCase());
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(Navigation.this,databaseError.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else{
+            Toast.makeText(this,"No User.....",Toast.LENGTH_SHORT).show();
+            Log.w("Nav_Error","Something went wrong");
+        }
 
 
         mUploads = new ArrayList<>();
