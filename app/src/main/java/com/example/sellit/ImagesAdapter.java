@@ -38,12 +38,11 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImageViewH
         Upload uploadCurrent = mUploads.get(position);
 
         holder.itemName.setText(uploadCurrent.getmItemName());
-        holder.senderName.setText("by Unknown");
+        holder.senderName.setText("by "+uploadCurrent.getUploader_name());
         holder.price.setText(uploadCurrent.getmPrice());
         Picasso.get()
                 .load(uploadCurrent.getmImageUrl())
-                .fit()
-                .centerCrop()
+                .resize(180,150)
                 .into(holder.itemImage);
     }
 

@@ -48,6 +48,9 @@ public class UploadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
+        Intent intent = getIntent();
+        final String uploader_name = intent.getStringExtra("Uploader");
+
         mImageUri = null;
 
         mImageView = (ImageView)findViewById(R.id.upload_image_view);
@@ -94,8 +97,7 @@ public class UploadActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(item_description)){
                    item_description = "No Description Provided";
                 }
-
-                uploadFile(item_name, item_price, item_description);
+                uploadFile(item_name, item_price, item_description,uploader_name);
 
 
             }
@@ -140,7 +142,7 @@ public class UploadActivity extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
 
-    private void uploadFile(final String item_name, final String item_price, final String item_description)
+    private void uploadFile(final String item_name, final String item_price, final String item_description, final String userName)
     {
         if(mImageUri!=null) {
             dialog.setTitle("Uploading Data....");
@@ -157,7 +159,7 @@ public class UploadActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             String downloadUrl = String.valueOf(uri);
-                            Upload upload = new Upload(item_name, item_price, item_description, downloadUrl);
+                            Upload upload = new Upload(item_name, item_price, item_description, downloadUrl,userName);
 
                             DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("item_details");
                             String id = dbref.push().getKey();

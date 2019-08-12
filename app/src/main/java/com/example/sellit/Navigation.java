@@ -51,23 +51,15 @@ public class Navigation extends AppCompatActivity
 
     private ProgressBar mProgressBar;
 
+    public String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Navigation.this,UploadActivity.class);
-                startActivity(intent);
-            }
-        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -76,11 +68,6 @@ public class Navigation extends AppCompatActivity
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-
-        mProgressBar = findViewById(R.id.progress_bar);
-        recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         View header = navigationView.getHeaderView(0);
         final TextView nav_header = header.findViewById(R.id.username_nav);
@@ -94,7 +81,7 @@ public class Navigation extends AppCompatActivity
             data.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    String username = dataSnapshot.child(uid).child("username").getValue(String.class);
+                    username = dataSnapshot.child(uid).child("username").getValue(String.class);
                     assert username != null;
                     nav_header.setText(username.toUpperCase());
                 }
@@ -110,6 +97,20 @@ public class Navigation extends AppCompatActivity
             Log.w("Nav_Error","Something went wrong");
         }
 
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Navigation.this,UploadActivity.class);
+                intent.putExtra("Uploader",username);
+                startActivity(intent);
+            }
+        });
+
+        mProgressBar = findViewById(R.id.progress_bar);
+        recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mUploads = new ArrayList<>();
 
@@ -134,12 +135,6 @@ public class Navigation extends AppCompatActivity
                 mProgressBar.setVisibility(View.INVISIBLE);
             }
         });
-
-
-
-
-
-
     }
 
     @Override
