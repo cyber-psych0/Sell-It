@@ -4,45 +4,71 @@ import android.media.Image;
 
 public class Upload {
 
-    private String mItemName;
-    private String mPrice;
-    private String mDescription;
-    private String mImageUrl;
-    private String uploader_name;
+    private String item_discription;
+    private String item_price;
+    private String username;
+    private String item_name;
+    private String downloaduri;
+    private String Id;
 
     public Upload(){
-        //Empty Constructor
+
+    }
+    public Upload(String item_discription, String item_price, String username, String item_name, String downloaduri, String id) {
+        this.item_discription = item_discription;
+        this.item_price = item_price;
+        this.username = username;
+        this.item_name = item_name;
+        this.downloaduri = downloaduri;
+        Id = id;
     }
 
-    public Upload(String ItemName, String Price, String Description, String ImageUrl,String uploaderName){
-
-        mItemName = ItemName;
-        mPrice = Price;
-        mDescription = Description;
-        mImageUrl = ImageUrl;
-        uploader_name =  uploaderName;
+    public String getItem_discription() {
+        return item_discription;
     }
 
-    public String getmItemName() {
-        return mItemName;
+    public void setItem_discription(String item_discription) {
+        this.item_discription = item_discription;
     }
 
-
-    public String getmPrice() {
-        return mPrice;
+    public String getItem_price() {
+        return item_price;
     }
 
-
-    public String getmDescription() {
-        return mDescription;
+    public void setItem_price(String item_price) {
+        this.item_price = item_price;
     }
 
-
-    public String getmImageUrl() {
-        return mImageUrl;
+    public String getUsername() {
+        return username;
     }
 
-    public String getUploader_name() {
-        return uploader_name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getItem_name() {
+        return item_name;
+    }
+
+    public void setItem_name(String item_name) {
+        this.item_name = item_name;
+    }
+
+    public String getDownloaduri() {
+        return downloaduri;
+    }
+
+    public void setDownloaduri(String downloaduri) {
+        this.downloaduri = downloaduri;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
     }
 }
+

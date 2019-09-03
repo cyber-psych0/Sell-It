@@ -81,9 +81,9 @@ public class Navigation extends AppCompatActivity
             data.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    username = dataSnapshot.child(uid).child("username").getValue(String.class);
+                    username = dataSnapshot.child(uid).child("username").getValue().toString();
                     assert username != null;
-                    nav_header.setText(username.toUpperCase());
+                    nav_header.setText(username);
                 }
 
                 @Override
@@ -108,7 +108,7 @@ public class Navigation extends AppCompatActivity
         });
 
         mProgressBar = findViewById(R.id.progress_bar);
-        recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -121,10 +121,11 @@ public class Navigation extends AppCompatActivity
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUploads.clear();
                 for(DataSnapshot mdataSnapshot:dataSnapshot.getChildren()){
+
                     Upload upload = mdataSnapshot.getValue(Upload.class);
                     mUploads.add(upload);
                 }
-                imagesAdapter = new ImagesAdapter(Navigation.this,mUploads);
+                imagesAdapter = new ImagesAdapter(getApplicationContext(),mUploads);
                 recyclerView.setAdapter(imagesAdapter);
                 mProgressBar.setVisibility(View.INVISIBLE);
             }

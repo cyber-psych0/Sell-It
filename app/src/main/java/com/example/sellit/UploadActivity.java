@@ -19,12 +19,16 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.HashMap;
 
 public class UploadActivity extends AppCompatActivity {
 
@@ -37,8 +41,9 @@ public class UploadActivity extends AppCompatActivity {
     private ProgressDialog dialog;
 
     private Uri mImageUri;
-
+    String idd;
     private DatabaseReference mDatabaseReference;
+    private FirebaseUser user;
     private StorageReference mStorageReference;
 
     private StorageTask mUploadTask;
@@ -63,6 +68,9 @@ public class UploadActivity extends AppCompatActivity {
         choose_image_bn = (Button)findViewById(R.id.choose_image_bn);
         upload_bn = (Button)findViewById(R.id.upload_bn);
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        idd = user.getUid();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("item_details");
         mStorageReference = FirebaseStorage.getInstance().getReference("item_details");
 
@@ -159,11 +167,21 @@ public class UploadActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             String downloadUrl = String.valueOf(uri);
-                            Upload upload = new Upload(item_name, item_price, item_description, downloadUrl,userName);
+                            //Upload upload = new Upload(item_name, item_price, item_description, downloadUrl,userName);
+
 
                             DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("item_details");
                             String id = dbref.push().getKey();
-                            dbref.child(id).setValue(upload).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+                            HashMap<String,String> hashMap=new HashMap<>();
+                            hashMap.put("item_name",item_name);
+                            hashMap.put("item_price",item_price);
+                            hashMap.put("item_description",item_description);
+                            hashMap.put("downloaduri",downloadUrl);
+                            hashMap.put("username",userName);
+                            hashMap.put("id",idd);
+                            assert id != null;
+                            dbref.child(id).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
 

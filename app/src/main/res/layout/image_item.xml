@@ -2,6 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="10dp">
 
@@ -12,40 +14,64 @@
 
         <ImageView
             android:id="@+id/item_image_view"
-            android:layout_width="180dp"
-            android:layout_height="150dp"
+            android:layout_width="140dp"
+            android:fitsSystemWindows="true"
+            android:layout_margin="5dp"
+            android:layout_height="200dp"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:padding="12dp"
+            android:layout_marginLeft="5dp"
             android:orientation="vertical">
+
             <TextView
-                android:id="@+id/item_name_text_view"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="Item Name"
+                android:text="Product Name : "
                 android:textColor="#000000"
-                android:textSize="25sp"/>
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/item_name_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Product Name"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="Seller Name"
+                android:layout_marginTop="5dp"
+                android:textSize="20sp"/>
             <TextView
                 android:id="@+id/sender_name_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Sender Name"
-                android:textSize="15sp"/>
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:text="Selling Price"
+                android:layout_marginTop="5dp"
+                android:textSize="18sp"
+                android:textColor="#000000"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Rs"
-                    android:textSize="35sp"
+                    android:textSize="30sp"
                     android:textColor="#000000"/>
                 <TextView
                     android:id="@+id/price_text_view"
@@ -53,8 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     tools:text="300"
-                    android:textSize="35sp"
-                    android:textColor="#000000"/>
+                    android:textSize="30sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
