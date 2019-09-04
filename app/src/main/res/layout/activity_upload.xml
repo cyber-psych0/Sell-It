@@ -1,137 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UploadActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/reg_appbar">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/reg_toolbar">
+            android:id="@+id/appbar"
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
+            <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/close"
+                        android:src="@drawable/ic_arrow_back_black_24dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/close"
+                        android:layout_marginStart="10dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        android:text="Upload Your Product"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/close" />
+
+                </RelativeLayout>
+
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@id/appbar"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/dsds"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/close"
-                    android:src="@drawable/ic_arrow_back_black_24dp"
-                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:id="@+id/linear1"
+                    android:layout_marginTop="10dp"
+                    android:padding="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="Please Select Image "/>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ffffff"
+                        android:id="@+id/choose_image_bn"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold"
+                        android:text="choose"
+                        android:background="@drawable/button_design"/>
 
-                    />
 
-                <TextView
+                </LinearLayout>
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:textStyle="bold"
-                    android:textColor="#ffffff"
-                    android:textSize="20sp"
-                    android:text="Item Details"
-                    tools:ignore="RtlCompat" />
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_below="@id/linear1">
 
-            </RelativeLayout>
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_marginTop="20dp"
+                        android:id="@+id/upload_image_view"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="150dp"
+                        android:layout_marginBottom="20dp"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:text="Your Uploaded Image"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/linear1"
+                    android:id="@+id/linear2"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical"
+                    android:padding="30dp"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="TItle"
+                        android:id="@+id/item_name_edit_text"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Expected Selling Price (Ruppees)"
+                        android:layout_marginTop="10dp"
+                        android:inputType="number"
+                        android:id="@+id/price_edit_text"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Description"
+                        android:inputType="text"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/description_edit_text"/>
 
 
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="15dp"
-        android:padding="25dp"
-        android:layout_below="@+id/reg_appbar"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Enter Item Details"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
-
-        <EditText
-            android:id="@+id/item_name_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:hint="Item Name"
-            android:inputType="text"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rs."
-                android:textSize="22sp"
-                android:layout_marginTop="20dp"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:paddingRight="10dp"
-                />
-
-            <EditText
-                android:id="@+id/price_edit_text"
+                </LinearLayout>
+            </LinearLayout>
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="Price"
-                android:inputType="number"
-                />
-        </LinearLayout>
+                android:layout_below="@id/dsds"
+                android:id="@+id/upload_bn"
+                android:layout_margin="20dp"
+                android:background="@drawable/button_design"
+                android:text="Upload"
+                android:textColor="#ffffff"/>
 
-        <EditText
-            android:id="@+id/description_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Description (Optional)"
-            android:inputType="text"
-            android:height="100dp"
-            />
 
-        <Button
-            android:id="@+id/choose_image_bn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_design"
-            android:text="Choose Image"
-            android:textColor="#ffffff"/>
 
-        <ImageView
-            android:id="@+id/upload_image_view"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_marginTop="10dp"/>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/upload_bn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
-        android:background="@drawable/button_design"
-        android:text="Upload"
-        android:textColor="#ffffff"/>
+    </RelativeLayout>
 
-</RelativeLayout>
+
+
+</ScrollView>

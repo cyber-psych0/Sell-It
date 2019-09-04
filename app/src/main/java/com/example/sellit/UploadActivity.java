@@ -15,6 +15,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -58,15 +59,15 @@ public class UploadActivity extends AppCompatActivity {
 
         mImageUri = null;
 
-        mImageView = (ImageView)findViewById(R.id.upload_image_view);
+        mImageView = findViewById(R.id.upload_image_view);
         close = findViewById(R.id.close);
 
-        name = (EditText)findViewById(R.id.item_name_edit_text);
+        name = findViewById(R.id.item_name_edit_text);
         price = (EditText)findViewById(R.id.price_edit_text);
         description = (EditText)findViewById(R.id.description_edit_text);
 
         choose_image_bn = (Button)findViewById(R.id.choose_image_bn);
-        upload_bn = (Button)findViewById(R.id.upload_bn);
+        upload_bn = findViewById(R.id.upload_bn);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
