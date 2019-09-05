@@ -85,7 +85,7 @@ public class Register extends AppCompatActivity {
     }
 
     private void createnewacount() {
-        String Eemail = emaill.getText().toString();
+        final String Eemail = emaill.getText().toString();
         String ppass = passwordd.getText().toString();
         final String usernaaam = username.getText().toString();
 
@@ -117,6 +117,7 @@ public class Register extends AppCompatActivity {
                                 hashMap.put("username", usernaaam);
                                 hashMap.put("imageURL", "noimage");
                                 hashMap.put("status","offline");
+                                hashMap.put("email",Eemail);
 
 
                                 root_reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {

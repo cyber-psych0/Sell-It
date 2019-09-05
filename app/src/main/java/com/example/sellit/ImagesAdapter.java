@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,15 +36,23 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImageViewH
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
 
-        Upload uploadCurrent = mUploads.get(position);
+        final Upload upload = mUploads.get(position);
+        holder.itemName.setText(upload.getItem_name());
+        holder.price.setText(upload.getItem_price());
+        holder.senderName.setText(upload.getUsername());
 
-        holder.itemName.setText(uploadCurrent.getmItemName());
-        holder.senderName.setText("by "+uploadCurrent.getUploader_name());
-        holder.price.setText(uploadCurrent.getmPrice());
         Picasso.get()
-                .load(uploadCurrent.getmImageUrl())
+                .load(upload.getDownloaduri())
                 .resize(180,150)
                 .into(holder.itemImage);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(mContext,""+upload.getItem_name(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -51,13 +60,13 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImageViewH
         return mUploads.size();
     }
 
-    public class ImageViewHolder extends RecyclerView.ViewHolder{
+    class ImageViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView itemName,senderName,price;
-        public ImageView itemImage;
+        TextView itemName,senderName,price;
+        ImageView itemImage;
 
 
-        public ImageViewHolder(@NonNull View itemView) {
+        ImageViewHolder(@NonNull View itemView) {
             super(itemView);
 
             itemName = itemView.findViewById(R.id.item_name_text_view);
