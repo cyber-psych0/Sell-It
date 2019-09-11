@@ -170,6 +170,10 @@ public class Navigation extends AppCompatActivity
             startActivity(new Intent(Navigation.this,MainActivity.class));
             finish();
         }
+        else if(id == R.id.action_about){
+            startActivity(new Intent(Navigation.this,About.class));
+            finish();
+        }
 
         return super.onOptionsItemSelected(item);
     }
