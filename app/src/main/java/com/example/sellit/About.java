@@ -2,6 +2,7 @@ package com.example.sellit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class About extends AppCompatActivity implements View.OnClickListener {
     private LinearLayout ayshman;
     private LinearLayout nikhil;
     private LinearLayout akhil;
+    private LinearLayout article;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class About extends AppCompatActivity implements View.OnClickListener {
         star = findViewById(R.id.Star_on_github);
         Rohit = findViewById(R.id.Rohit_about);
         ayshman = findViewById(R.id.Ayusman_about);
+        article = findViewById(R.id.Submit_article);
         nikhil = findViewById(R.id.nikhil);
         akhil = findViewById(R.id.akhil);
         ayshman.setOnClickListener(this);
@@ -31,6 +34,7 @@ public class About extends AppCompatActivity implements View.OnClickListener {
         Rohit.setOnClickListener(this);
         akhil.setOnClickListener(this);
         star.setOnClickListener(this);
+        article.setOnClickListener(this);
     }
 
     @Override
@@ -51,6 +55,8 @@ public class About extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.Ayusman_about:
                 openweb("https://github.com/cyber-psych0/");
+            case R.id.Submit_article:
+                sendMail();
             default :
                 break;
         }
@@ -61,4 +67,17 @@ public class About extends AppCompatActivity implements View.OnClickListener {
         Intent implicit = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(implicit);
     }
+    private void sendMail() {
+
+        String mailto = "mailto:projects.iiitl@gmail.com";
+
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse(mailto));
+        try {
+            startActivity(emailIntent);
+        } catch (ActivityNotFoundException e) {
+
+        }
+    }
+
 }

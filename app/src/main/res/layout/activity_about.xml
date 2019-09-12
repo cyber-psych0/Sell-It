@@ -386,7 +386,7 @@
                         android:layout_marginStart="32dp"
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
-                        android:text="Submit Your Aricle here"
+                        android:text="Submit Your Reviews and Suggestions"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
                 </LinearLayout>
