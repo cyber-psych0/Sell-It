@@ -151,7 +151,7 @@
                     <ImageView
                         android:id="@+id/icon_github"
                         android:layout_width="24dp"
-                        android:src="@drawable/ic_github_circle_white_24dp"
+                        android:src="@drawable/ic_star_black_24dp"
                         android:layout_height="24dp"
                         tools:ignore="ContentDescription,UnusedAttribute" />
 
