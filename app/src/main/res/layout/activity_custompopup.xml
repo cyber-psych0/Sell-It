@@ -19,12 +19,12 @@ tools:context=".Custompopup">
     android:orientation="vertical">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="40dp"
         android:id="@+id/profle_image"
-        app:civ_circle_background_color="#000000"
+       android:src="@drawable/ic_person"
         android:layout_gravity="center_horizontal"
         />
 
